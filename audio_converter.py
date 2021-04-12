@@ -1,4 +1,5 @@
 import os
+import unit_tests
 
 from argparse import ArgumentParser
 from pydub import AudioSegment
@@ -6,30 +7,30 @@ from os.path import join, exists
 from utils import CONVERTED_DIR
 
 
-def get_audio_paths(args):
-    files_list = os.listdir(args.base_dir)
-    frmt = "mp3" if args.mp3 else "wav"
+def get_audio_paths(base_dir, mp3):
+    frmt = "mp3" if mp3 else "wav"
+    files_list = os.listdir(base_dir)
     return [file for file in files_list
             if file.endswith(frmt)]
 
 
 def convert_mp3_to_wav(base_dir,
-                       mp3_path,
-                       wav_name):
+                       mp3_path):
     audio = AudioSegment.from_mp3(join(base_dir, mp3_path))
     out_dir = join(base_dir, CONVERTED_DIR)
     if not exists(out_dir):
         os.mkdir(out_dir)
-    audio.export(os.path.join(out_dir, wav_name))
+    wav_name = mp3_path.replace("mp3", "wav")
+    audio.export(join(out_dir, wav_name))
 
 
 def convert_batch(args):
-    audio_paths = get_audio_paths(args)
-    for mp3_name in audio_paths:
-        wav_name = mp3_name.replace("mp3", "wav")
-        convert_mp3_to_wav(args.base_dir,
-                           mp3_name,
-                           wav_name)
+    audio_paths = get_audio_paths(args.base_dir,
+                                  args.mp3)
+    for file_name in audio_paths:
+        if file_name.endswith("mp3"):
+            convert_mp3_to_wav(args.base_dir,
+                               file_name)
 
 
 parser = ArgumentParser()
