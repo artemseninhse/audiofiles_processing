@@ -21,7 +21,7 @@ def convert_mp3_to_wav(base_dir,
     if not exists(out_dir):
         os.mkdir(out_dir)
     wav_name = mp3_path.replace("mp3", "wav")
-    audio.export(join(out_dir, wav_name))
+    audio.export(join(out_dir, wav_name), format="wav")
 
 
 def convert_batch(args):
