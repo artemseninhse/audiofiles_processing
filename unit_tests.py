@@ -6,7 +6,6 @@ from audio_converter import (
     convert_mp3_to_wav
 )
 from os.path import join
-from scipy.io import wavfile
 from testcases import (
     TEST_DIR_RAW,
     TEST_LIST_AUDIO,
@@ -14,7 +13,8 @@ from testcases import (
 )
 from utils import (
     CONVERTED_DIR,
-    clear_dir
+    clear_dir,
+    read_wav
 )
 
 
@@ -67,7 +67,7 @@ class TestsUnit:
         assert os.listdir(dir_convert), "Empty dir"
         test_wav = join(dir_convert,
                         os.listdir(dir_convert)[0])
-        wavfile.read(test_wav)
+        read_wav(test_wav)
         clear_dir(dir_convert)
 
 
