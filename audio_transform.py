@@ -44,7 +44,6 @@ class AudioAug:
         tfm = Transformer()
         getattr(tfm, self.transform)(*self.params)
         getattr(tfm, "build")(in_path, out_path)
-        arr = tfm.build_array(in_path)
 
     def apply(self, 
               input_path, 
