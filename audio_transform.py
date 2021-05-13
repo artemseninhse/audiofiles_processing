@@ -57,7 +57,6 @@ class AudioAug:
                                 filename)
                 out_path = self._get_out_path(filename,
                                               out_dir)
-                print(out_path, input_path)
                 self.transform_audio(in_path,
                                      out_path)
         else:
