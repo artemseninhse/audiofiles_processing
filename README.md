@@ -28,6 +28,7 @@ $ augmentor = AudioAug(transform, params)
 $ augmentor.apply(in_path, out_dir)
 ```
 
+```
 {'cell_type': 'code',
  'execution_count': 1,
  'id': '4e2134b5',
@@ -54,4 +55,5 @@ $ augmentor.apply(in_path, out_dir)
   '    dump_pickle,\n',
   '    set_seed\n',
   ')\n']}
+```
 
