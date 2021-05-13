@@ -6,8 +6,8 @@ This program is a wrapper around Sox library for audio augmentation allowing to 
 ### Getting started
 ```
 $ git clone https://github.com/artemseninhse/audiofiles_processing.git
-$ pip install -r requirements.txt
 $ cd audiofiles_processing/
+$ pip install -r requirements.txt
 ```
 
 ### Launch from terminal
